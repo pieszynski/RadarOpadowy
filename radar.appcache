@@ -10,6 +10,10 @@ js/index.js
 css/radar144.png
 css/radar192.png
 css/carbon.jpg
+css/topo_v2.jpg
+css/rzeki.png
+css/granice.png
+css/miasta2.png
 css/style.css
 
 NETWORK:
@@ -23,5 +27,5 @@ FALLBACK:
 
 NETWORK:
 # This will prevent other network resources from being accessed.
-
+api/
 #images/imagename5.png

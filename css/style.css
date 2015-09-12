@@ -5,3 +5,28 @@ body {
 	background-image: url('carbon.jpg');
 	background-repeat: repeat;
 }
+.mapki {
+	position: relative;
+}
+.mapki > * {
+	position: absolute;
+}
+.mapki img {
+	width: 100%;
+}
+.topo {
+	z-index: 100;
+}
+.rzeki {
+	z-index: 200;
+}
+.granice {
+	z-index: 300;
+}
+.miasta {
+	z-index: 400;
+}
+.radar {
+	z-index: 500;
+	display: none;
+}
