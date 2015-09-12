@@ -1,0 +1,20 @@
+{
+	"name": "Radar opadowy",
+	"start_url": "index.html",
+	"orientation": "portrait",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "css/radar144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"density": "3.0"
+		},
+		{
+			"src": "css/radar192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"density": "4.0"
+		}
+	]
+}

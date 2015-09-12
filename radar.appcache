@@ -1,0 +1,24 @@
+CACHE MANIFEST
+# Version 1
+# Czyszczenie AppCache w Chrome: chrome://appcache-internals/
+
+CACHE:
+js/index.js
+css/radar144.png
+css/radar192.png
+css/carbon.jpg
+css/style.css
+
+NETWORK:
+# biała-lista obiektów nie podlegających CACHE
+
+FALLBACK:
+# This will enable imagename4.png to be as a replacement for 
+# all resources under the images dir when there is no network connectivity.
+
+#images/ images/imagename4.png
+
+NETWORK:
+# This will prevent other network resources from being accessed.
+
+#images/imagename5.png
