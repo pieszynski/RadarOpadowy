@@ -1,6 +1,9 @@
 CACHE MANIFEST
 # Version 1
+# 1
+# 2015-09-12 20:37
 # Czyszczenie AppCache w Chrome: chrome://appcache-internals/
+# Cache odświeżany jest TYLKO I WYŁĄCZNIE po zmianie manifestu
 
 CACHE:
 js/index.js
