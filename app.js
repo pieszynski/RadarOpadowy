@@ -13,7 +13,7 @@ app.disable('x-powered-by');
 app.use(compression());
 
 // serwowanie plików statycznych
-app.use(express.static(__dirname + '/'));
+app.use('/radar', express.static(__dirname + '/'));
 
 // analiza parametrów
 router.param('controller', function (req, res, next, controller) {
@@ -32,7 +32,8 @@ router.all('/radar/api/:controller', function (req, res, next) {
     // TODO: akcja kontrolera
     console.log('ctl:', req.ctrlName, req.ctlAction);
 
-    next();
+    if (!serveRadar(req.ctrlName, req, res))
+        next();
 });
 
 // domyslna ścieżka
@@ -53,3 +54,17 @@ app.listen(8010, function () {
 
     console.log('Express Webserver started');
 });
+
+// ==============================================
+
+function serveRadar(radarFile, req, res) {
+
+    var rOut = (/^radar(\d)\.png$/gi).exec(radarFile);
+
+    if (!rOut)
+        return false;
+
+    var num = rOut[1];
+
+    res.status(300).end('plik-' + num);
+}
