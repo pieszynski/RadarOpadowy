@@ -24,9 +24,9 @@ body {
 	z-index: 300;
 }
 .miasta {
-	z-index: 400;
+	z-index: 500;
 }
 .radar {
-	z-index: 500;
+	z-index: 400;
 	display: none;
 }

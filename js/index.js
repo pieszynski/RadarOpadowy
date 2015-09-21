@@ -15,7 +15,7 @@
 		console.log('update ready!', appCache.status, appCache.UPDATEREADY);
 
 		//appCache.update(); // ręczne wymuszenie aktualizacji
-		
+
 		if (appCache.UPDATEREADY === appCache.status) {	// === 4
 			appCache.swapCache();
 			window.location.reload();
@@ -34,13 +34,24 @@
 
 	var radars = [],
 		frameMs = 500,
-		loopDelayMs = 1500;
+		loopDelayMs = 1500,
+		__locker = undefined;
 
 	function prepRadar(idx) {
 		var elem = document.getElementById('radar' + idx);
+		elem.idx = idx;
 		elem.onload = function () {
 			radars[idx] = elem;
+			if (!radars[0]) {
+				radars[0] = elem;
+			} else if (radars[0].idx > idx) {
+				radars[0] = elem;
+			}
+
+			if (!__locker && !!(__locker = 'locked')) // specjalne przypisanie!
+				startFrames();
 		}
+		//elem.src = 'api/radar' + idx + '.png';
 	}
 
 	function startFrames(idx, last) {
@@ -48,10 +59,10 @@
 			idx = radars.length-1;
 
 		if (-1 === idx) {
-			setTimeout(function () { 
+			setTimeout(function () {
 				if (last !== undefined)
 					radars[last].style.display = 'none';
-				startFrames(); 
+				startFrames();
 			}, loopDelayMs);
 			return;
 		}
@@ -74,6 +85,13 @@
 	prepRadar(2);
 
 	//window.p = startFrames;
-	startFrames();
+
+	setTimeout(function() {
+		// w razie czego gdyby żadne ze zdarzeń onLoad dla obrazka nie wystartowało w czasie jednego cyklu
+		if (!__locker) {
+			__locker = 'locked';
+			startFrames()
+		}
+	}, frameMs + 3*frameMs + loopDelayMs);
 
 })(window, document);
